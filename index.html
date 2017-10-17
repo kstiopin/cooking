@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8"/>
+    <title>Cooking</title>
+    <style>
+        #app {
+            padding: 50px 200px;
+        }
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .main > .menu {
+            width: 200px;
+            border-right: 1px solid darkgreen;
+            min-height: 500px;
+        }
+        .main > .menu h3.active {
+            color: darkblue;
+        }
+        .main > .recipe {
+            width: 1000px;
+            padding: 0 50px;
+        }
+        .main > .recipe ul > li > span {
+            font-style: italic;
+        }
+        .main > .recipe > p {
+            white-space: pre-line;
+        }
+        .main > .recipe .photos {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .main > .recipe .photos > img {
+            height: 200px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="bundle.js"></script>
+</body>
+</html>
