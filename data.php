@@ -1,18 +1,17 @@
 <?php
-setlocale ("LC_TIME", "ru_RU");
-// DB connection
-
-$connection = @mysql_connect($db_host, $db_user, $db_password) or die("DB error connecting");
-mysql_select_db($db_name, $connection);
-mysql_query("SET NAMES utf8");
+require_once './config/config_public.php';
 
 $resp = [];
-$recipes = mysql_query("SELECT * FROM cousine");
-while ($f = mysql_fetch_assoc($recipes)) {
+$recipes = $mysqli->query("SELECT * FROM cousine");
+while ($f = $recipes->fetch_assoc()) {
     $recipe = $f;
-    $ingredients = mysql_query("SELECT * FROM cousine_ingredients LEFT JOIN ingredients ON cousine_ingredients.id_ingredients = ingredients.id WHERE id_cousine = ".$f['id']." ORDER BY `order`");
+    $ingredients = $mysqli->query("
+        SELECT * FROM cousine_ingredients
+        LEFT JOIN ingredients ON cousine_ingredients.id_ingredients = ingredients.id 
+        WHERE id_cousine = ".$f['id']."
+        ORDER BY `order`");
     $recipe['ingredients'] = [];
-    while ($f = mysql_fetch_assoc($ingredients)) {
+    while ($f = $ingredients->fetch_assoc()) {
         $recipe['ingredients'][] = $f;
     }
     $recipe['photos'] = [];
