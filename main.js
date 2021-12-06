@@ -5,7 +5,7 @@ class App extends Component {
   state = { recipes: [], recipeId: 0 }
 
   componentWillMount() {
-    fetch('data.php', {
+    fetch('https://api.kstiopin.in.ua/get_cooking_data.php', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
